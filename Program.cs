@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel;
 using System.IO.Compression;
 using System.Linq.Expressions;
+using System;
 
-namespace Rot;
+namespace Rot{
 class Program
 {
     static int ROT;
@@ -77,4 +78,5 @@ class Program
 
         return output;
     }
+}
 }
