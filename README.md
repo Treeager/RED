@@ -17,4 +17,4 @@ Then the program repeats.
 - For Windows: just install the .exe (might be detected as a virus or a treat by windows defender)
 - For Linux: just install the package (only deb and rpm available)
 
-[Link](https://github.com/Treeager/RED/releases/tag/testing) to pre-release
+[Link](https://github.com/Treeager/RED/releases/tag/testing) to packages
