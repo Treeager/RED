@@ -482,4 +482,4 @@ bin/
 obj/
 out/
 build.sh
-rot.exe
+Directory.Build.props
