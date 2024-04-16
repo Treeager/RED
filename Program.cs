@@ -12,25 +12,25 @@ class Program
     {
 
         Console.Write("ROT: "); ROT = Convert.ToInt32( Console.ReadLine() );
-        Console.WriteLine("Type 'e' for encrypt, 'd for decrypt or 'b' for breake (exit).\n");
+        Console.WriteLine("Type 'e' for encrypt, 'd for decrypt or 'dnk' for decrypt no key.\nUse 'b' for break (exit).\n");
 
         while (true){
-            Console.Write("Mode: "); char mode = Convert.ToChar(Console.ReadLine() ?? "");
+            Console.Write("Mode: "); string mode = Console.ReadLine() ?? "";
             string fraze;
 
-            if (mode != 'b') {
+            if (mode != "b") {
                 Console.Write("Phraze: "); fraze = Console.ReadLine() ?? "";
             }
             else break;
 
             // TODO: find better way of knowing rot
-            if (mode == 'e') {
+            if (mode == "e") {
                 Console.WriteLine("\nEncrypted: " + Encrypt(fraze));
             }
-            else if (mode == 'd') {
+            else if (mode == "d") {
                 Console.WriteLine("\nDecrypted: " + Decrypt(fraze, ROT));
             }
-            else if (mode == 'n') {
+            else if (mode == "dnk") {
                 Console.WriteLine(DecryptNoKey(fraze));
             }
             else if (fraze == "") {
