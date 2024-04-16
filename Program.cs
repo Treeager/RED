@@ -7,31 +7,40 @@ using System.Xml;
 namespace Rot{
 class Program
 {
-    static int ROT;
     static void Main(string[] args)
     {
-
-        Console.Write("ROT: "); ROT = Convert.ToInt32( Console.ReadLine() );
         Console.WriteLine("Type 'e' for encrypt, 'd for decrypt or 'dnk' for decrypt no key.\nUse 'b' for break (exit).\n");
 
+        // The main loop of the app
         while (true){
-            Console.Write("Mode: "); string mode = Console.ReadLine() ?? "";
-            string fraze;
+            int ROT;
+            
+            Console.Write("Mode: ");
+            
+            string mode = Console.ReadLine() ?? "";
+            string fraze = "";
 
+            Console.WriteLine();
             if (mode != "b") {
-                Console.Write("Phraze: "); fraze = Console.ReadLine() ?? "";
+                Console.Write("Phraze: ");
+                fraze = Console.ReadLine() ?? "";
             }
-            else break;
+            else Environment.Exit(0);
+            
 
-            // TODO: find better way of knowing rot
+            if (mode == "dnk") {
+                Console.WriteLine(DecryptNoKey(fraze));
+                continue;
+            }
+            
+            ROT = GetRot();
+
+            // TODO: find better way of asking for rot
             if (mode == "e") {
-                Console.WriteLine("\nEncrypted: " + Encrypt(fraze));
+                Console.WriteLine("\nEncrypted: " + Encrypt(fraze, ROT));
             }
             else if (mode == "d") {
                 Console.WriteLine("\nDecrypted: " + Decrypt(fraze, ROT));
-            }
-            else if (mode == "dnk") {
-                Console.WriteLine(DecryptNoKey(fraze));
             }
             else if (fraze == "") {
                 Console.WriteLine("\n\nNo input.");
@@ -39,7 +48,12 @@ class Program
         }
     }
 
-    static string Encrypt(string fraze) {
+    static int GetRot() {
+        Console.Write("ROT: ");
+        return Convert.ToInt32( Console.ReadLine() );
+    }
+    
+    static string Encrypt(string fraze, int ROT) {
         string output = "";
         int letter;
         fraze = fraze.ToLower();
@@ -59,7 +73,6 @@ class Program
 
         return output;
     }
-
     static string Decrypt(string fraze, int ROT) {
         string output = ""; int letter; 
         fraze = fraze.ToLower();
