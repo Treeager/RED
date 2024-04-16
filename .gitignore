@@ -480,4 +480,6 @@ $RECYCLE.BIN/
 
 bin/
 obj/
+out/
+build.sh
 rot.exe
