@@ -2,6 +2,7 @@
 using System.IO.Compression;
 using System.Linq.Expressions;
 using System;
+using System.Xml;
 
 namespace Rot{
 class Program
@@ -15,7 +16,6 @@ class Program
 
         while (true){
             Console.Write("Mode: "); char mode = Convert.ToChar(Console.ReadLine() ?? "");
-            
             string fraze;
 
             if (mode != 'b') {
@@ -23,11 +23,15 @@ class Program
             }
             else break;
 
+            // TODO: find better way of knowing rot
             if (mode == 'e') {
                 Console.WriteLine("\nEncrypted: " + Encrypt(fraze));
             }
             else if (mode == 'd') {
-                Console.WriteLine("\nDecrypted: " + Decrypt(fraze));
+                Console.WriteLine("\nDecrypted: " + Decrypt(fraze, ROT));
+            }
+            else if (mode == 'n') {
+                Console.WriteLine(DecryptNoKey(fraze));
             }
             else if (fraze == "") {
                 Console.WriteLine("\n\nNo input.");
@@ -56,7 +60,7 @@ class Program
         return output;
     }
 
-    static string Decrypt(string fraze) {
+    static string Decrypt(string fraze, int ROT) {
         string output = ""; int letter; 
         fraze = fraze.ToLower();
 
@@ -76,6 +80,14 @@ class Program
             }
         }
 
+        return output;
+    }
+    static string DecryptNoKey(string fraze) {
+        string output = "";
+        for (int rot = 1; rot <= 26; rot++) {
+            output += $"Rot{rot}: {Decrypt(fraze, rot)} \n";
+        }
+        
         return output;
     }
 }
