@@ -61,7 +61,10 @@ class Program
         foreach(char ch in fraze) {
             letter = Convert.ToInt32 (ch ) - 96;
 
-            // Console.WriteLine(letter);
+            if (ch == ' ') {
+                output += ' ';
+                continue;
+            }
 
             if ( letter + ROT > 26 ) {
                 output += (char) ((int) (( letter + ROT ) % 26 ) + 96 );
@@ -80,7 +83,10 @@ class Program
         foreach(char ch in fraze) {
             letter = (int) ch - 96;
 
-
+            if (ch == ' ') {
+                output += ' ';
+                continue;
+            }
 
             if (letter - ROT == 0) {
                 output += 'z';
